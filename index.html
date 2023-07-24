@@ -186,7 +186,33 @@
                   <div class="j-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore autem quod facilis expedita fugit corporis et ullam, tenetur, quia eos, necessitatibus nulla voluptatibus rem at! Itaque, eius fugiat labore autem velit eos totam assumenda laborum veniam quos dolorum sed odit quibusdam eum deleniti unde. Nihil reprehenderit veniam esse maiores consequatur?</div>
                 </div>
               </div>
-            </main>
+              <div class="container cd" id="joinUs">
+                <div class="cd-content">
+
+                </div>
+              </div>
         </main>
+<script>
+  // Function to handle the Intersection Observer callback
+  function handleIntersection(entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated'); // Add 'animated' class when card enters viewport
+        observer.unobserve(entry.target); // Stop observing once animation is applied
+      }
+    });
+  }
+
+  // Create an Intersection Observer
+  const observer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.2 // Adjust the threshold as needed (0.2 means 20% of the element is visible)
+  });
+
+  // Observe all the cards with class 'card'
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => observer.observe(card));
+  const joinUs = document.querySelectorAll('.joinUs');
+  joinUs.forEach(joinUs => observer.observe(joinUs));
+</script>
         </body>
     </html>

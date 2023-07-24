@@ -31,7 +31,7 @@ a,.link{
     font-family: 'Poppins';
     font-weight: 900;
     font-size: 30px;
-}
+}/*card slide in from lefton scroll animation*/
 header{
     position: absolute;
     top: 0px;
@@ -97,7 +97,40 @@ main{
     transition: 0.2s ease-in-out;
     cursor: pointer;
     border-radius: 0;
+    opacity: 0; /* Initially set the opacity to 0 */
 }
+
+@keyframes slideInFromLeft {
+0% {
+  transform: translateX(-100%); /* Start position for sliding */
+  opacity: 0; /* Start with 0 opacity */
+}
+100% {
+  transform: translateX(0); /* End position for sliding */
+  opacity: 1; /* Fully visible at the end of sliding */
+}
+}
+@keyframes slideInFromDown {
+  0% {
+    transform: translateY(100%); /* Start position for sliding */
+    opacity: 0; /* Start with 0 opacity */
+  }
+  100% {
+    transform: translateY(0); /* End position for sliding */
+    opacity: 1; /* Fully visible at the end of sliding */
+  }
+}
+
+
+
+/* Apply the slide-in animation to cards when they become visible in the viewport */
+.card.animated {
+    animation: slideInFromLeft 0.8s ease-in-out forwards;
+}
+.joinUs.animated {
+    animation: slideInFromDown 0.8s ease-in-out forwards;
+}
+            
 .card:hover{
     transform: scale(1.03);
 }
@@ -123,6 +156,7 @@ main{
     height:55vh;
     padding: 0;
     display: flex;
+    opacity: 0;
 }
 .j-img{
     position: absolute;
